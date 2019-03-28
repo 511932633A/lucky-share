@@ -10,12 +10,6 @@
     <name>Lucky Share</name>
     <packaging>pom</packaging>
 
-    <parent>
-        <groupId>com.itmuch.yes</groupId>
-        <artifactId>spring-cloud-yes</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
-
     <modules>
         <module>lucky-eureka</module>
         <module>lucky-config</module>
