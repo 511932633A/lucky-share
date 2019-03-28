@@ -1,5 +1,6 @@
 package com.lucky.share.mapper;
 
+import com.lucky.share.domain.Notice;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -8,5 +9,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface NoticeMapper {
-    
+    /**
+     * 获取最新的通知
+     * @return
+     */
+    Notice getNotice();
 }

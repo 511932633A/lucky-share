@@ -4,18 +4,31 @@
     <resultMap id="articleResult" type="com.lucky.share.domain.Article">
         <id column="id" property="id"/>
         <result column="uid" property="uid"/>
-        <result column="volume" property="volume"/>
-        <result column="balance" property="balance"/>
-        <result column="remark" property="remark"/>
+        <result column="type" property="type"/>
+        <result column="title" property="title"/>
+        <result column="author" property="author"/>
+        <result column="intro" property="intro"/>
+        <result column="price" property="price"/>
+        <result column="download_url" property="downloadUrl"/>
         <result column="create_time" property="createTime"/>
     </resultMap>
 
-    <insert id="insert" parameterType="com.lucky.share.domain.Article">
+    <insert id="create" parameterType="com.lucky.share.domain.Article">
         INSERT INTO tb_article(uid, type, title, author, intro, price, download_url, create_time) VALUE
         (#{uid}, #{type}, #{title}, #{author}, #{intro}, #{price}, #{downloadUrl}, now())
     </insert>
 
-    <select id="getList" resultType="articleResult">
+    <!--获取最新资料列表-->
+    <select id="getNewArticles" resultType="articleResult">
         SELECT * FROM tb_article ORDER BY create_time DESC limit #{start}, #{size}
+    </select>
+
+    <!--获取我投稿的列表-->
+    <select id="getMyArticles" resultType="articleResult">
+        SELECT * FROM tb_article WHERE uid = #{uid} ORDER BY create_time DESC limit #{start}, #{size}
+    </select>
+
+    <select id="getArticle" resultType="articleResult">
+        SELECT * FROM tb_article WHERE id = #{aid}
     </select>
 </mapper>

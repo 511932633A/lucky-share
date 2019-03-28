@@ -11,6 +11,7 @@ import com.lucky.share.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -41,6 +42,10 @@ public class UserService{
     public Map login(LoginRequest request){
         // TODO: 这里需要通过code，去腾讯哪获取唯一的openid
         String openId = queryOpenId(request.getCode());
+        // 请求失败、
+        if (StringUtils.isEmpty(openId)) {
+            return null;
+        }
         // 检查库里是否存在
         User user = userMapper.getUserByOpenId(openId);
         if (user == null) {
