@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.lucky.share</groupId>
+    <artifactId>lucky-share</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Lucky Share</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.itmuch.yes</groupId>
+        <artifactId>spring-cloud-yes</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>lucky-eureka</module>
+        <module>lucky-config</module>
+        <module>lucky-user</module>
+        <module>lucky-content</module>
+        <module>lucky-bonus</module>
+        <module>lucky-zuul</module>
+        <module>lucky-common</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <springfox.version>2.8.0</springfox.version>
+        <feign-form.version>3.2.2</feign-form.version>
+        <keycloak.version>3.4.1.Final</keycloak.version>
+        <mybatis.version>2.0.0</mybatis.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring cloud依赖管理 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Edgware.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- feign用于支持文件上传的依赖 -->
+            <dependency>
+                <groupId>io.github.openfeign.form</groupId>
+                <artifactId>feign-form</artifactId>
+                <version>${feign-form.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign.form</groupId>
+                <artifactId>feign-form-spring</artifactId>
+                <version>${feign-form.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lucky.share</groupId>
+                <artifactId>lucky-common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <!-- swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

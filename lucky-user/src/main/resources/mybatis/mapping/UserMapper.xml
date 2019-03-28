@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lucky.share.mapper.UserMapper">
+    <resultMap id="userResultMap" type="com.lucky.share.domain.User">
+        <id column="id" property="id"/>
+        <result column="open_id" property="openId"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="avatar_url" property="avatarUrl"/>
+        <result column="gender" property="gender"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <insert id="addUser" parameterType="com.lucky.share.domain.User">
+        INSERT INTO tb_user(open_id, nick_name, avatar_url, gender, create_time) VALUE
+        (#{openId}, #{nickName}, #{avatarUrl}, #{gender}, now())
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="getUserByOpenId" parameterType="java.lang.String" resultMap="userResultMap">
+        SELECT * from tb_user where open_id = #{openId}
+    </select>
+</mapper>

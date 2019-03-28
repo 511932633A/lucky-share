@@ -1,0 +1,11 @@
+server:
+  port: 8092
+spring:
+  application:
+    name: lucky-content
+    index: ${random.long}
+  cloud:
+    config:
+      uri: http://${CONFIG_HOST:localhost}:${CONFIG_PORT:18888}
+      profile: ${PROFILE:dev}
+debug: true

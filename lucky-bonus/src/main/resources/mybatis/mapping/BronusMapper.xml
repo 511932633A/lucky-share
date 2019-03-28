@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lucky.share.mapper.BonusMapper">
+    <insert id="insert" parameterType="com.lucky.share.domain.Bonus">
+        INSERT INTO tb_bonus(uid, balance, create_time) VALUE
+        SELECT #{uid}, #{balance}, now() FROM DUAL
+        WHERE NOT EXISTS (SELECT uid FROM tb_bonus WHERE uid = #{uid} )
+    </insert>
+
+    <select id="getBalance" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT balance from tb_bonus where uid = #{uid}
+    </select>
+
+    <update id="updateBalance">
+        UPDATE tb_bonus SET balance = balance + #{volume}
+        <where>
+            uid = #{uid}
+            <if test="volume lt 0">
+                <!--如果为负的，则需要判断余额必需比扣款还大-->
+                AND <![CDATA[ AND balance >=  ABS(#{volume})]]>
+            </if>
+        </where>
+    </update>
+</mapper>

@@ -1,0 +1,13 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: lucky-zuul
+    index: ${random.long}
+  cloud:
+    config:
+      uri: http://${CONFIG_HOST:localhost}:${CONFIG_PORT:18888}
+      profile: ${PROFILE:dev}
+logging:
+  level:
+    root: info

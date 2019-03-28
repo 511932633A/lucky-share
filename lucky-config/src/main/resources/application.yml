@@ -1,0 +1,15 @@
+server:
+  port: 18888
+spring:
+  application:
+    name: lucky-config
+    index: ${random.long}
+  cloud:
+    config:
+      server:
+        git:
+          username: ${GIT_USERNAME:SweetKevin}
+          password: ${GIT_PASSWORD:xxxxx}
+          uri: ${GIT_URL:https://github.com/SweetKevin/lucky-share-config-repo.git}
+          search-paths: dev*
+debug: true
