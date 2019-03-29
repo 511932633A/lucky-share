@@ -5,6 +5,7 @@ import com.lucky.share.constant.ErrorCode;
 import com.lucky.share.convert.AjaxResult;
 import com.lucky.share.dto.TranDto;
 import com.lucky.share.service.BonusService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,7 @@ public class BonusController {
     /**
      * 创建账号
      */
+    @ApiOperation(value = "创建账号")
     @ResponseBody
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public AjaxResult<Object> create(@UserId Integer uid) {
@@ -40,6 +42,7 @@ public class BonusController {
      * @param tranDto
      * @return
      */
+    @ApiOperation(value = "交易", notes = "交易类型为：2.签到 3.兑换")
     @ResponseBody
     @RequestMapping(value = "/tran", method = RequestMethod.POST)
     public AjaxResult<Object> tran(@UserId Integer uid, @RequestBody TranDto tranDto) {
@@ -53,6 +56,7 @@ public class BonusController {
      * @param size
      * @return
      */
+    @ApiOperation(value = "积分明细")
     @ResponseBody
     @GetMapping(value = "/detail")
     public AjaxResult<List> detail(@UserId Integer uid,
@@ -64,6 +68,7 @@ public class BonusController {
     /**
      * 签到
      */
+    @ApiOperation(value = "签到")
     @ResponseBody
     @RequestMapping(value = "/sign", method = RequestMethod.POST)
     public AjaxResult<Object> sign(@UserId Integer uid) {

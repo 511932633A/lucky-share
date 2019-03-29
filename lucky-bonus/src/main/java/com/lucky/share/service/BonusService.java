@@ -9,6 +9,7 @@ import com.lucky.share.mapper.BonusDetailMapper;
 import com.lucky.share.mapper.BonusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class BonusService {
      * @param uid
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     public AjaxResult<Object> create(Integer uid) {
         Bonus bonus = new Bonus();
         bonus.setUid(uid);
@@ -56,6 +58,7 @@ public class BonusService {
      * @param tran
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     public AjaxResult<Object> tran(Integer uid, TranDto tran) {
         // 查询余额
         Integer balance = bonusMapper.getBalance(uid);

@@ -21,7 +21,7 @@ public interface ExchangeMapper {
      * @param size
      * @return
      */
-    List<Article> getMyContribute(@Param("uid") Integer uid, @Param("page") Integer page, @Param("size") Integer size);
+    List<Article> getMyExchange(@Param("uid") Integer uid, @Param("page") Integer page, @Param("size") Integer size);
 
     /**
      * 兑换

@@ -35,6 +35,10 @@ public enum ErrorCode {
      */
     BONUS_UNAVAILABLE(-6, "The bonus service unavailable"),
     /**
+     * 参数错误
+     */
+    BONUS_PARAM_ERROR(-7, "The param error."),
+    /**
      * 不支持
      */
     UNSUPPORTED(-98, "Unsupported"),

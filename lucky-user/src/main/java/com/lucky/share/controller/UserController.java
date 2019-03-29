@@ -6,6 +6,7 @@ import com.lucky.share.convert.AjaxResult;
 import com.lucky.share.dto.LoginRequest;
 import com.lucky.share.feign.BonusClient;
 import com.lucky.share.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,7 @@ public class UserController {
         return bonusClient.hello();
     }
 
+    @ApiOperation(value = "登录", notes = "这里由于未申请微信接口，openid为随机生成")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public AjaxResult<Map> login(@RequestBody LoginRequest loginRequest) {

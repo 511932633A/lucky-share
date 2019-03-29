@@ -21,7 +21,7 @@
         <result column="create_time" property="createTime"/>
     </resultMap>
 
-    <select id="getMyContribute" parameterType="java.lang.Integer" resultType="com.lucky.share.domain.Article">
+    <select id="getMyExchange" parameterType="java.lang.Integer" resultType="com.lucky.share.domain.Article">
         SELECT
         a.id as id,
         a.type as type,

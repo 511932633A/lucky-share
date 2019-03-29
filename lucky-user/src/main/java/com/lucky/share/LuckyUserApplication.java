@@ -10,6 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.validation.Validator;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -21,6 +22,7 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @EnableEurekaClient
+@EnableTransactionManagement
 @SpringBootApplication
 @EnableFeignClients
 public class LuckyUserApplication implements WebMvcConfigurer{

@@ -11,6 +11,7 @@ import com.lucky.share.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
@@ -39,6 +40,7 @@ public class UserService{
      * 登录
      * @return
      */
+    @Transactional
     public Map login(LoginRequest request){
         // TODO: 这里需要通过code，去腾讯哪获取唯一的openid
         String openId = queryOpenId(request.getCode());
