@@ -20,7 +20,7 @@ public interface BonusClient {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/tran", method = RequestMethod.POST)
+    @RequestMapping(value = "/bonus/tran", method = RequestMethod.POST)
     @HystrixCommand(fallbackMethod="getFallback")
     AjaxResult<Object> tran(@RequestBody TranDto tranDto);
 }

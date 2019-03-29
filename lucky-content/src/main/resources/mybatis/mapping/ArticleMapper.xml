@@ -19,16 +19,16 @@
     </insert>
 
     <!--获取最新资料列表-->
-    <select id="getNewArticles" resultType="articleResult">
+    <select id="getNewArticles" resultMap="articleResult">
         SELECT * FROM tb_article ORDER BY create_time DESC limit #{start}, #{size}
     </select>
 
     <!--获取我投稿的列表-->
-    <select id="getMyArticles" resultType="articleResult">
+    <select id="getMyArticles" resultMap="articleResult">
         SELECT * FROM tb_article WHERE uid = #{uid} ORDER BY create_time DESC limit #{start}, #{size}
     </select>
 
-    <select id="getArticle" resultType="articleResult">
+    <select id="getArticle" resultMap="articleResult">
         SELECT * FROM tb_article WHERE id = #{aid}
     </select>
 </mapper>

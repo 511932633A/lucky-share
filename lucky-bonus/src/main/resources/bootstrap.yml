@@ -9,4 +9,5 @@ spring:
       uri: http://${CONFIG_HOST:localhost}:${CONFIG_PORT:18888}
       profile: ${PROFILE:dev}
 logging:
-  level: info
+  level:
+    root: debug

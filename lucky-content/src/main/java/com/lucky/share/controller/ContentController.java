@@ -6,8 +6,10 @@ import com.lucky.share.convert.AjaxResult;
 import com.lucky.share.domain.Article;
 import com.lucky.share.dto.ArticleDto;
 import com.lucky.share.service.ContentService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
  * @author Kevin.Chen
  * @date 2019/3/28.
  */
+@Api(tags = "内容API")
 @RestController
 @RequestMapping("/content")
 public class ContentController {
@@ -41,7 +44,7 @@ public class ContentController {
     }
 
     @ApiOperation(value = "兑换")
-    @RequestMapping("/exchange")
+    @RequestMapping(value = "/exchange", method = RequestMethod.POST)
     public AjaxResult<Object> exchange(@UserId Integer uid, @RequestBody Integer aid) {
         return new AjaxResult<>().create(ErrorCode.SUCCESS, contentService.exchange(uid, aid));
     }
@@ -55,7 +58,7 @@ public class ContentController {
     }
 
     @ApiOperation(value = "投稿")
-    @GetMapping("/contribute")
+    @RequestMapping(value = "/contribute", method = RequestMethod.POST)
     public AjaxResult<Object> contribute(@UserId Integer uid, @RequestBody ArticleDto article) {
         ErrorCode code = contentService.contribute(uid, article);
         return new AjaxResult<>().create(code);

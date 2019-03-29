@@ -5,6 +5,7 @@ import com.lucky.share.constant.ErrorCode;
 import com.lucky.share.convert.AjaxResult;
 import com.lucky.share.dto.TranDto;
 import com.lucky.share.service.BonusService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author Kevin.Chen
  * @date 2019/3/26.
  */
+@Api(tags = "积分API")
 @RestController
 @RequestMapping("/bonus")
 public class BonusController {

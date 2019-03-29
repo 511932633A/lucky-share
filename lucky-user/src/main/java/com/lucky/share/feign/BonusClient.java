@@ -4,6 +4,7 @@ import com.lucky.share.constant.ErrorCode;
 import com.lucky.share.convert.AjaxResult;
 import com.lucky.share.dto.TranDto;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import feign.Headers;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +23,9 @@ public interface BonusClient {
      * 创建账号
      */
     @ResponseBody
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/bonus/create", method = RequestMethod.POST)
     @HystrixCommand(fallbackMethod="getFallback")
-    AjaxResult<Object> create();
+    AjaxResult<Object> create(@RequestHeader("Authorization") String token);
 
     /**
      * 交易
@@ -32,7 +33,7 @@ public interface BonusClient {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/tran", method = RequestMethod.POST)
+    @RequestMapping(value = "/bonus/tran", method = RequestMethod.POST)
     @HystrixCommand(fallbackMethod="getFallback")
     AjaxResult<Object> tran(@RequestBody TranDto tranDto);
 }
@@ -46,7 +47,7 @@ class BonusFallback implements BonusClient {
     }
 
     @Override
-    public AjaxResult<Object> create() {
+    public AjaxResult<Object> create(@RequestHeader("Authorization") String token) {
         return new AjaxResult<>().create(ErrorCode.BONUS_UNAVAILABLE);
     }
 

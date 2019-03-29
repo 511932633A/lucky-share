@@ -10,7 +10,7 @@
         <result column="create_time" property="createTime"/>
     </resultMap>
 
-    <select id="getDetail" parameterType="java.lang.Integer" resultType="bonusDetailResult">
+    <select id="getDetail" parameterType="java.lang.Integer" resultMap="bonusDetailResult">
         SELECT * FROM tb_bonus_detail WHERE uid = #{uid} ORDER  BY create_time DESC limit #{start}, #{size}
     </select>
 

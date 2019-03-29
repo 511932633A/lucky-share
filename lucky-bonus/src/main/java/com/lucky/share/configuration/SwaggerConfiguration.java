@@ -49,7 +49,7 @@ public class SwaggerConfiguration {
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.lucky.share"))
+                .apis(RequestHandlerSelectors.basePackage("com.lucky.share.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(this.apiInfo())

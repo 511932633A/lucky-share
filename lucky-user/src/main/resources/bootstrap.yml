@@ -8,4 +8,6 @@ spring:
     config:
       uri: http://${CONFIG_HOST:localhost}:${CONFIG_PORT:18888}
       profile: ${PROFILE:dev}
-debug: true
+logging:
+  level:
+    root: debug
