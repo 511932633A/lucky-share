@@ -34,11 +34,11 @@
         FROM tb_article a, tb_exchange e
         WHERE a.id = e.aid AND e.uid = #{uid}
         ORDER BY e.create_time DESC
-        DESC limit #{start}, #{size}
+        limit #{start}, #{size}
     </select>
 
     <insert id="create" parameterType="com.lucky.share.domain.Exchange">
         INSERT INTO tb_exchange(uid, aid, volume, create_time) VALUE
-        (#{uid}, #{aid}, #{volume}, #{remark},now())
+        (#{uid}, #{aid}, #{volume},now())
     </insert>
 </mapper>

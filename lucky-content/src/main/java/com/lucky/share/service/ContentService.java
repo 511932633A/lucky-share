@@ -65,7 +65,7 @@ public class ContentService {
         exchange.setUid(uid);
         exchange.setVolume(article.getPrice());
         exchange.setAid(aid);
-        articleMapper.create(article);
+        exchangeMapper.create(exchange);
 
         // TODO : 由于这里已经插入兑换表中，为了防止接下来扣款可能失败，这里可以往一个临时表
         // TODO : 记录下，如果扣款成功，则删除临时表。扣款失败，由客服介入扣款。

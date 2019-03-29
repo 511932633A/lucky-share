@@ -17,11 +17,11 @@ public interface ExchangeMapper {
     /**
      * 获取投稿列表
      * @param uid
-     * @param page
+     * @param start
      * @param size
      * @return
      */
-    List<Article> getMyExchange(@Param("uid") Integer uid, @Param("page") Integer page, @Param("size") Integer size);
+    List<Article> getMyExchange(@Param("uid") Integer uid, @Param("start") Integer start, @Param("size") Integer size);
 
     /**
      * 兑换
